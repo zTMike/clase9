@@ -185,6 +185,8 @@ class Ventana1 (QMainWindow):
 
 
 
+
+
 if __name__ == '__main__':
     # creamos una aplicacion pyqt5
     app = QApplication(sys.argv)

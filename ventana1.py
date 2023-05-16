@@ -1,8 +1,9 @@
 import sys
 
 from PyQt5 import QtGui
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QApplication
+from PyQt5.QtGui import QPixmap, QFont
+from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QApplication, QFormLayout, QLineEdit, \
+    QPushButton
 
 
 class Ventana1 (QMainWindow):
@@ -10,6 +11,7 @@ class Ventana1 (QMainWindow):
         super(Ventana1,self).__init__(parent)
         #Titulo de la ventana
         self.setWindowTitle("Formulario de registro")
+
 
         #Poner icono
         self.setWindowIcon(QtGui.QIcon('imagenes/descarga.png'))
@@ -54,6 +56,128 @@ class Ventana1 (QMainWindow):
 
         #Le ponemos las margenes
         self.horizontal.setContentsMargins(30,30,30,30)
+
+        #creamos layout izquierdo
+        self.ladoIzquierdo=QFormLayout()
+
+        #creamos letrero
+        self.letrero1=QLabel()
+
+        #Escribimos texto del letrero
+        self.letrero1.setText("Informacion del cliente")
+
+        #Asignacion de tipo de letra
+        self.letrero1.setFont(QFont("Andale Mono",20))
+
+        #Color del texto
+        self.letrero1.setStyleSheet("color:#000080;")
+
+        #Agregreamos el letrero en la primera fila
+        self.ladoIzquierdo.addRow(self.letrero1)
+
+        #Hacemos el letrero 2
+        self.letrero2=QLabel()
+
+        #establecemos el tama;o del letrero
+        self.letrero2.setFixedWidth(340)
+
+        #Escribimos el texto del letrero
+        self.letrero2.setText("Por favor ingrese la informacion del cliente"
+                              "\nen el formulario de abajo los campos marcados"
+                              "\ncon un asterisco son obligatorios")
+
+        #tipo de letra letrero2
+        self.letrero2.setFont(QFont("Andale Mono", 10))
+
+        #ponemos color del texto y margenes
+        self.letrero2.setStyleSheet("color:#000080; margin-bottom:40px;"
+                                    "margin-top:20px;"
+                                    "padding-bottom:10px;"
+                                    "border:2px solid #000080;"
+                                    "border-left:none;"
+                                    "border-right:none;"
+                                    "border-top:none;")
+        #agregar letrero 2 a la fila
+        self.ladoIzquierdo.addRow(self.letrero2)
+
+        #hacemos el campo para ingresar el nombre
+        self.nombreCompleto=QLineEdit()
+        self.nombreCompleto.setFixedWidth(250)
+
+
+        #Agregarmos estos al formulario
+        self.ladoIzquierdo.addRow("Nombre Completo* :",self.nombreCompleto)
+
+        #Campo de ingresar contrase;a
+        self.password1=QLineEdit()
+        self.password1.setFixedWidth(250)
+        self.password1.setEchoMode(QLineEdit.Password)
+
+        # Agregarmos estos al formulario
+        self.ladoIzquierdo.addRow("Contraseña* :", self.password1)
+
+        # Campo de ingresar contrase;a
+        self.password2 = QLineEdit()
+        self.password2.setFixedWidth(250)
+        self.password2.setEchoMode(QLineEdit.Password)
+
+        # Agregarmos estos al formulario
+        self.ladoIzquierdo.addRow("Contraseña* :", self.password2)
+
+        # hacemos el campo de documento
+        self.documento = QLineEdit()
+        self.documento.setFixedWidth(250)
+
+        # Agregarmos estos al formulario
+        self.ladoIzquierdo.addRow("Documento* :", self.documento)
+
+
+        # hacemos el campo de Correo
+        self.correo = QLineEdit()
+        self.correo.setFixedWidth(250)
+
+        # Agregarmos estos al formulario
+        self.ladoIzquierdo.addRow("Correo* :", self.correo)
+
+        #boton regristrar
+        self.botonRegistrar=QPushButton("Registrar")
+
+        #Establecemos el ancho del boton
+        self.botonRegistrar.setFixedWidth(90)
+
+        #estilos del boton
+        self.botonRegistrar.setStyleSheet("background-color:#000080;"
+                                          "color:#FFFFFF;"
+                                          "padding:10px;"
+                                          "margin-top:40px;")
+
+        #conexion con el boton registrar
+        #self.botonRegistrar.clicked.connect(self.accion_botonregistrar)
+
+        #Hacemos el boton limpiar datos
+        self.botonlimpiar = QPushButton("Limpiar")
+
+        # Establecemos el ancho del boton
+        self.botonlimpiar.setFixedWidth(90)
+
+        # estilos del boton
+        self.botonlimpiar.setStyleSheet("background-color:#000080;"
+                                          "color:#FFFFFF;"
+                                          "padding:10px;"
+                                          "margin-top:40px;")
+        #conexion con funcion limpiar
+        #self.botonRegistrar.clicked.connect(self.accion_botonlimpiar)
+
+
+        self.ladoIzquierdo.addRow(self.botonRegistrar,self.botonlimpiar)
+
+
+
+
+
+
+        #Agregamos el layout al lado izquierdo al layout horizaontal
+        self.horizontal.addLayout(self.ladoIzquierdo)
 
 
         #siempre tener al final

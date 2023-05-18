@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QA
     QPushButton, QDialog, QDialogButtonBox, QVBoxLayout
 
 
+
 class Ventana1 (QMainWindow):
     def __init__(self,parent=None):
         super(Ventana1,self).__init__(parent)
